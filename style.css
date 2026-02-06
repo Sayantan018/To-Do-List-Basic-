@@ -124,9 +124,12 @@ body{
 
 .tasks .task h3{
     width: 80%;
+    height: 100%;
     font-size: 18px;
     font-weight: 600;
     font-family: sans-serif;
+    display: flex;
+    align-items: center;
 }
 
 .tasks .task button{
@@ -145,4 +148,8 @@ body{
     font-size: 18px;
     font-weight: 400;
     cursor: pointer;
+}
+
+.tasks .task .editBtn{
+    background-color: rgb(25, 97, 231);
 }
