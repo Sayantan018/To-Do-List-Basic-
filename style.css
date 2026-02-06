@@ -119,6 +119,7 @@ body{
     background-color: #514d4d;
     padding: 10px;
     border-radius: 5px;
+    gap: 5px;
 }
 
 .tasks .task h3{
