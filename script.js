@@ -4,8 +4,8 @@ const tasks = document.querySelector(".tasks")
 const noTask = document.querySelector(".noTask")
 
 addBtn.addEventListener("click", () => {
-    
-    if (taskInp.value.trim() === ""){
+
+    if (taskInp.value.trim() === "") {
         alert("please write something first")
         return
     }
@@ -13,7 +13,7 @@ addBtn.addEventListener("click", () => {
     let task = document.createElement("div")
     task.classList.add("task")
     task.innerHTML = `
-                        <h3 class="textEl">${taskInp.value}</h3>
+                        <h3 class="textEl" contentEditable="false">${taskInp.value}</h3>
                         <button class="deleteBtn">
                         <i class="ri-delete-bin-6-line"></i>
                         </button>
@@ -22,10 +22,13 @@ addBtn.addEventListener("click", () => {
                         </button>
                     `
     let textEl = task.querySelector(".textEl")
-    textEl.addEventListener("dblclick", () =>{
-        textEl.style.textDecoration = "line-through";
+
+    textEl.addEventListener("dblclick", () => {
+        if(textEl.contentEditable === 'false'){
+            textEl.style.textDecoration = "line-through";
+        }
     })
-    
+
     let deleteBtn = task.querySelector(".deleteBtn")
     deleteBtn.addEventListener("click", () => {
         task.remove()
@@ -36,9 +39,13 @@ addBtn.addEventListener("click", () => {
     })
 
     let editBtn = task.querySelector(".editBtn")
-    editBtn.addEventListener("click", (e) =>{
-        textEl.contentEditable = 'True'
+    editBtn.addEventListener("click", () => {
+        textEl.contentEditable = 'true'
         textEl.focus()
+    })
+
+    textEl.addEventListener("blur", () => {
+        textEl.contentEditable = 'false'
     })
 
     tasks.appendChild(task)
